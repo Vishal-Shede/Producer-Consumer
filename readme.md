@@ -15,7 +15,7 @@ The challenge is that both threads run independently, so we must **synchronize a
 - Consumer may try to **remove when buffer is empty** → causes underflow.  
 - If both access at the same time → **race conditions**.  
 
-👉 This version is shown in [`ProducerConsumer_NoSync.java`](ProducerConsumer_NoSync.java).  
+👉 This version is shown in `PCDemo1.java`.  
 It demonstrates the **problems** clearly in the program output.
 
 ---
@@ -27,7 +27,7 @@ We use **synchronization (`synchronized`, `wait()`, `notify()`)** so that:
 
 This ensures **smooth cooperation** between threads.
 
-👉 This fixed version is implemented in [`ProducerConsumer_Sync.java`](ProducerConsumer_Sync.java).  
+👉 This fixed version is implemented in `PCDemo2.java`.  
 
 ---
 
@@ -63,11 +63,8 @@ This implementation shows:
 ---
 
 ## 📂 Files in This Repo
-- `ProducerConsumer_NoSync.java` → Version without synchronization (shows problems).  
-- `ProducerConsumer_Sync.java` → Correct synchronized version using `wait()`/`notify()`.  
+- `PCDemo1.java` → Version without synchronization (shows problems).  
+- `PCDemo2.java` → Correct synchronized version using `wait()`/`notify()`.  
 
 ---
 
-## 🖥️ Sample Output
-
-### Without Synchronization
