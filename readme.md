@@ -68,3 +68,36 @@ This implementation shows:
 
 ---
 
+## 📝 Algorithm for Producer–Consumer Problem
+
+1. **Create `SharedBuffer` class**  
+   - Has `LinkedList<Integer>` to store items.  
+   - Has an integer `capacity` to limit size.  
+   - To access buffer → define two methods: `produce()` and `consume()`.  
+
+2. **Produce method →**  
+   - Mark as `synchronized`.  
+   - If buffer is full → call `wait()`.  
+   - Else → add item to buffer, print message.  
+   - Call `notify()` to wake up consumer.  
+
+3. **Consume method →**  
+   - Mark as `synchronized`.  
+   - If buffer is empty → call `wait()`.  
+   - Else → remove first item from buffer, print message.  
+   - Call `notify()` to wake up producer.  
+
+4. **Producer thread →**  
+   - Create `Producer` class implementing `Runnable`.  
+   - In `run()`, loop: call `produce(value++)`, add small `Thread.sleep()` to simulate work.  
+
+5. **Consumer thread →**  
+   - Create `Consumer` class implementing `Runnable`.  
+   - In `run()`, loop: call `consume()`, add small `Thread.sleep()`.  
+
+6. **Main class →**  
+   - Create `SharedBuffer` with capacity.  
+   - Create `Thread` objects for Producer & Consumer.  
+   - Start both threads with `start()`.  
+
+
